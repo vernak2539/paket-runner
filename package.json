@@ -1,0 +1,22 @@
+{
+  "name": "paket-runner",
+  "version": "0.0.1",
+  "description": "Node module for running Paket commands",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vernak2539/paket-runner.git"
+  },
+  "keywords": [
+    "paket"
+  ],
+  "author": "Alex Vernacchia <alvernacchia@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vernak2539/paket-runner/issues"
+  },
+  "homepage": "https://github.com/vernak2539/paket-runner#readme"
+}
