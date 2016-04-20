@@ -1,6 +1,6 @@
 {
   "name": "paket-runner",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Node module for running Paket commands",
   "main": "lib/paket.js",
   "scripts": {
