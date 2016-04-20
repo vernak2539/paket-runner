@@ -2,9 +2,9 @@
   "name": "paket-runner",
   "version": "0.0.1",
   "description": "Node module for running Paket commands",
-  "main": "index.js",
+  "main": "lib/paket.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./node_modules/jshint/bin/jshint -c .jshintrc lib/ test/ && node ./node_modules/mocha/bin/_mocha --reporter=spec test/"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,15 @@
   "bugs": {
     "url": "https://github.com/vernak2539/paket-runner/issues"
   },
-  "homepage": "https://github.com/vernak2539/paket-runner#readme"
+  "homepage": "https://github.com/vernak2539/paket-runner#readme",
+  "devDependencies": {
+    "jshint": "^2.9.1",
+    "mocha": "^2.4.5",
+    "mock-spawn": "^0.2.6",
+    "proxyquire": "^1.7.4",
+    "sinon": "^1.17.3"
+  },
+  "dependencies": {
+    "bluebird": "^3.3.5"
+  }
 }
