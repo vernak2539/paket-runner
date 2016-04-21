@@ -35,7 +35,7 @@ This list should get bigger over time...
 All [paket options][2] are available. The are additive, meaning not enabled by default
 
 ```js
-page.restore({
+paket.restore({
     force: true,
     onlyReferenced: true,
     touchAffectedRefs: true,
