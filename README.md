@@ -1,4 +1,4 @@
-# Node Paket Runner
+# Node Paket Runner [![Build Status](https://travis-ci.org/vernak2539/paket-runner.svg?branch=master)](https://travis-ci.org/vernak2539/paket-runner)
 
 Node module for running Paket commands
 
