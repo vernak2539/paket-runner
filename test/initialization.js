@@ -1,21 +1,21 @@
 'use strict';
 
-var assert = require('assert');
-var proxyquire = require('proxyquire');
-var sinon = require('sinon');
+const assert = require('assert');
+const proxyquire = require('proxyquire');
+const sinon = require('sinon');
 
-describe('initializing runner', function() {
+describe('initializing runner', () => {
   var processorSpy;
   var PaketRunner;
 
-  beforeEach(function() {
+  beforeEach(() => {
     processorSpy = sinon.spy();
     PaketRunner = proxyquire('../lib/paket', {
       './processor': processorSpy
     });
   });
 
-  it('should use provided path to paket.exe', function() {
+  it('should use provided path to paket.exe', () => {
     // Arrange
     var options = { paketPath: 'test path' };
     var paket = new PaketRunner(options);
@@ -27,7 +27,7 @@ describe('initializing runner', function() {
     assert.equal(processorSpy.args[0][0].path, options.paketPath);
   });
 
-  it('should use default paket.exe path', function() {
+  it('should use default paket.exe path', () => {
     // Arrange
     var paket = new PaketRunner();
 

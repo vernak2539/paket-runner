@@ -1,4 +1,4 @@
-# Node Paket Runner [![Build Status](https://travis-ci.org/vernak2539/paket-runner.svg?branch=master)](https://travis-ci.org/vernak2539/paket-runner)
+# Node Paket Runner [![Build Status](https://travis-ci.org/vernak2539/paket-runner.svg?branch=master)](https://travis-ci.org/vernak2539/paket-runner) [![Greenkeeper badge](https://badges.greenkeeper.io/vernak2539/paket-runner.svg)](https://greenkeeper.io/)
 
 Node module for running Paket commands
 
