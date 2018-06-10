@@ -1,14 +1,14 @@
 'use strict';
 
-var assert = require('assert');
-var proxyquire = require('proxyquire');
-var sinon = require('sinon');
+const assert = require('assert');
+const proxyquire = require('proxyquire');
+const sinon = require('sinon');
 
-describe('using restore command', function() {
-  var processorSpy;
-  var paket;
+describe('using restore command', () => {
+  let processorSpy;
+  let paket;
 
-  beforeEach(function() {
+  beforeEach(() => {
     var PaketRunner;
     processorSpy = sinon.spy();
     PaketRunner = proxyquire('../lib/paket', {
@@ -17,7 +17,7 @@ describe('using restore command', function() {
     paket = new PaketRunner();
   });
 
-  it('should have "restore" as first arg', function() {
+  it('should have "restore" as first arg', () => {
     // Act
     paket.restore({ force: true });
 
@@ -25,7 +25,7 @@ describe('using restore command', function() {
     assert.equal(processorSpy.args[0][0].args[0], 'restore');
   });
 
-  it('add --force to args', function() {
+  it('add --force to args', () => {
     // Act
     paket.restore({ force: true });
 
@@ -33,7 +33,7 @@ describe('using restore command', function() {
     assert.ok(processorSpy.args[0][0].args.indexOf('--force') >= 0);
   });
 
-  it('should --only-referenced to args', function() {
+  it('should --only-referenced to args', () => {
     // Act
     paket.restore({ onlyReferenced: true });
 
@@ -41,7 +41,7 @@ describe('using restore command', function() {
     assert.ok(processorSpy.args[0][0].args.indexOf('--only-referenced') >= 0);
   });
 
-  it('should --touch-affected-refs to args', function() {
+  it('should --touch-affected-refs to args', () => {
     // Act
     paket.restore({ touchAffectedRefs: true });
 
@@ -49,7 +49,7 @@ describe('using restore command', function() {
     assert.ok(processorSpy.args[0][0].args.indexOf('--touch-affected-refs') >= 0);
   });
 
-  it('should group to args', function() {
+  it('should group to args', () => {
     // Act
     paket.restore({ group: 'MyGroup' });
 
@@ -57,7 +57,7 @@ describe('using restore command', function() {
     assert.ok(processorSpy.args[0][0].args.indexOf('group MyGroup') >= 0);
   });
 
-  it('should --references-files to args', function() {
+  it('should --references-files to args', () => {
     // Act
     paket.restore({ referencesFiles: 'TestString' });
 

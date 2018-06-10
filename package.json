@@ -4,7 +4,9 @@
   "description": "Node module for running Paket commands",
   "main": "lib/paket.js",
   "scripts": {
-    "test": "node ./node_modules/jshint/bin/jshint -c .jshintrc lib/ test/ && node ./node_modules/mocha/bin/_mocha --reporter=spec test/"
+    "lint": "jshint -c .jshintrc **/*.js",
+    "test:local": "mocha --reporter=spec test/ --watch",
+    "test": "npm run lint && mocha --reporter=spec test/"
   },
   "repository": {
     "type": "git",

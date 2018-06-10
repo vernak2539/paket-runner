@@ -1,14 +1,14 @@
 'use strict';
 
-var assert = require('assert');
-var mockSpawnModule = require('mock-spawn');
-var proxyquire = require('proxyquire');
-var sinon = require('sinon');
+const assert = require('assert');
+const mockSpawnModule = require('mock-spawn');
+const proxyquire = require('proxyquire');
+const sinon = require('sinon');
 
-describe('general use of promises', function() {
-  it('should return a promise object', function() {
+describe('general use of promises', () => {
+  it('should return a promise object', () => {
     // Arrange
-    var processor = proxyquire('../lib/processor', {
+    const processor = proxyquire('../lib/processor', {
       child_process: {
         spawn: mockSpawnModule()
       }
@@ -23,12 +23,12 @@ describe('general use of promises', function() {
   });
 });
 
-describe('unsuccessful commands', function() {
-  it('should reject promise with error on exit code > 0', function(done) {
+describe('unsuccessful commands', () => {
+  it('should reject promise with error on exit code > 0', done => {
     // Arrange
-    var exitCode = 1;
-    var spawnMock = mockSpawnModule();
-    var processor = proxyquire('../lib/processor', {
+    const exitCode = 1;
+    const spawnMock = mockSpawnModule();
+    const processor = proxyquire('../lib/processor', {
       child_process: {
         spawn: spawnMock
       }
@@ -36,19 +36,19 @@ describe('unsuccessful commands', function() {
     spawnMock.sequence.add(spawnMock.simple(exitCode));
 
     // Act
-    processor({}).catch(function(err) {
+    processor({}).catch(err => {
       // Assert
       assert.equal(err.message, 'Paket command failed to run with exit code: ' + exitCode);
       done();
     });
   });
 
-  it('should reject promise with stderr if there', function(done) {
+  it('should reject promise with stderr if there', done => {
     // Arrange
-    var exitCode = 1;
-    var spawnMock = mockSpawnModule();
-    var sampleStderr = 'sample stderr';
-    var processor = proxyquire('../lib/processor', {
+    const exitCode = 1;
+    const spawnMock = mockSpawnModule();
+    const sampleStderr = 'sample stderr';
+    const processor = proxyquire('../lib/processor', {
       child_process: {
         spawn: spawnMock
       }
@@ -56,31 +56,31 @@ describe('unsuccessful commands', function() {
     spawnMock.sequence.add(spawnMock.simple(exitCode, null, sampleStderr));
 
     // Act
-    processor({}).catch(function(err) {
+    processor({}).catch(err => {
       // Assert
       assert.equal(err.message, 'Paket command failed: ' + sampleStderr);
       done();
     });
   });
 
-  it('should reject promise with error when child_process spawn errors', function(done) {
+  it('should reject promise with error when child_process spawn errors', done => {
     // Arrange
-    var spawnMock = mockSpawnModule();
-    var sampleError = new Error('spawn ENOENT');
-    var processor = proxyquire('../lib/processor', {
+    const spawnMock = mockSpawnModule();
+    const sampleError = new Error('spawn ENOENT');
+    const processor = proxyquire('../lib/processor', {
       child_process: {
         spawn: spawnMock
       }
     });
     spawnMock.sequence.add(function(cb) {
       this.emit('error', sampleError);
-      setTimeout(function() {
+      setTimeout(() => {
         return cb(8);
       }, 10);
     });
 
     // Act
-    processor({}).catch(function(err) {
+    processor({}).catch(err => {
       // Assert
       assert.equal(err, sampleError);
       done();
@@ -88,12 +88,12 @@ describe('unsuccessful commands', function() {
   });
 });
 
-describe('successful commands', function() {
-  it('should resolve promise on exit code === 0', function(done) {
+describe('successful commands', () => {
+  it('should resolve promise on exit code === 0', done => {
     // Arrange
-    var sampleStdout = 'sample stdout';
-    var spawnMock = mockSpawnModule();
-    var processor = proxyquire('../lib/processor', {
+    const sampleStdout = 'sample stdout';
+    const spawnMock = mockSpawnModule();
+    const processor = proxyquire('../lib/processor', {
       child_process: {
         spawn: spawnMock
       }
@@ -102,7 +102,7 @@ describe('successful commands', function() {
     spawnMock.sequence.add(spawnMock.simple(0));
 
     // Act
-    processor({}).then(function(stdout) {
+    processor({}).then(stdout => {
       // Assert
       assert.equal(stdout, sampleStdout);
       done();
@@ -110,26 +110,26 @@ describe('successful commands', function() {
   });
 });
 
-describe('spawing child proceses', function() {
-  it('should spawn child process with correct commands', function() {
+describe('spawing child proceses', () => {
+  it('should spawn child process with correct commands', () => {
     // Arrange
-    var spawnStub = sinon.stub().returns({
+    const spawnStub = sinon.stub().returns({
       stdout: {
-        on: function() {}
+        on: () => {}
       },
       stderr: {
-        on: function() {}
+        on: () => {}
       }
     });
-    var command = {
+    const command = {
       path: './path/to/paket.exe',
       args: ['restore', '--force']
     };
-    var processor = proxyquire('../lib/processor', {
+    const processor = proxyquire('../lib/processor', {
       child_process: {
         spawn: spawnStub
       },
-      bluebird: function() {}
+      bluebird: class {}
     });
 
     // Act
