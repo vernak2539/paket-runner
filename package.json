@@ -26,7 +26,7 @@
     "mocha": "^5.2.0",
     "mock-spawn": "^0.2.6",
     "proxyquire": "^2.0.1",
-    "sinon": "^5.1.1"
+    "sinon": "^8.0.0"
   },
   "dependencies": {
     "bluebird": "^3.3.5",
