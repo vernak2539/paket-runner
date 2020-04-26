@@ -23,7 +23,7 @@
   "homepage": "https://github.com/vernak2539/paket-runner#readme",
   "devDependencies": {
     "jshint": "^2.9.1",
-    "mocha": "^5.2.0",
+    "mocha": "^7.1.2",
     "mock-spawn": "^0.2.6",
     "proxyquire": "^2.0.1",
     "sinon": "^5.1.1"
